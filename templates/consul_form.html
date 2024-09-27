@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Consultar Formulários
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultar_form.css') }}"> 
+{% endblock %}
+
+{% block content %}
+    <h1>Consulte Seus Fromulários!</h1>
+    {% if formularios %}
+    <ul class="opc-forms">
+        {% for formulario in formularios %}
+        <li class="lista-forms">
+            <strong>Título:</strong> {{ formulario.titulo }}<br>
+            <strong>Descrição:</strong> {{ formulario.descricao }}<br>
+            <form method="GET" action="{{ url_for('deletar_form', formulario_id=formulario.id) }}">
+                <button class="del-form" type="submit" onclick="return confirm('Tem certeza que deseja deletar este formulário?');">Deletar</button>
+            </form>
+
+             <form method="GET" action="{{ url_for('editar_form', formulario_id=formulario.id) }}">
+                <button class="edit-form" type="submit">Editar</button>
+            </form>
+
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Nenhum formulário encontrado.</p>
+    {% endif %}    
+{% endblock %}

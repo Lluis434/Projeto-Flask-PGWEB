@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block stylesheets %}
+    {% endblock %}
+    <title>{% block title %} Página Inicial {% endblock %}</title>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul class="menu">
+            <li class="links_paginas"> 
+                {% if request.path != '/' %}
+                    <a class="link_texto" href="/"> Criar Formulário </a>
+                {% else %}
+                    <span> Criar Formulário</span>
+                {% endif%} 
+            </li>
+
+            <li class="links_paginas">
+                {% if request.path != '/consul_form/' %} 
+                    <a class="link_texto" href="/consul_form/"> Consultar Formulários </a> 
+                {% else %}
+                    <span> Consultar Formulários </span>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</header>
+
+{% block content %}
+<h1>Página Inicial</h1>
+{% endblock %}
+
+</body>
+</html>

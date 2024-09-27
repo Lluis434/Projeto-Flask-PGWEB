@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Editar Formulário
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultar_form.css') }}"> 
+{% endblock %}
+
+{% block content %}
+
+    <h1>Edite o Formulário</h1>
+
+    <form method="POST" action="{{ url_for('editar_form', formulario_id=formulario.id) }}">
+        {{ form.hidden_tag() }}
+        
+        <div class="titulo-edit">
+            <label for="titulo">Título</label>
+            {{ form.titulo(class="form-control", id="titulo") }}
+        </div>
+
+        <div class="descri-edit">
+            <label for="descricao">Descrição</label>
+            {{ form.descricao(class="form-control", id="descricao") }}
+        </div>
+
+        <button type="submit" class="btn-salvar-alt">Salvar Alterações</button>
+    </form>
+
+{% endblock %}

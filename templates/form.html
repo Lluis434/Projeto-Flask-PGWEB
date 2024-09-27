@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Criar Formulário
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cria_form.css') }}"> 
+{% endblock %}
+
+{% block content %}
+    <h1>Crie Seu Formulário!</h1>
+
+    <form method="POST" action="{{ url_for('criar_form') }}">
+        {{ form.hidden_tag() }} 
+        <div class="titulo-form">
+            <label for="titulo"> Título do Formulário</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Ex: Formulário de Inscrição" required>
+        </div>
+
+        <div class="descri-form">
+            <label for="descricao">Descrição do Formulário</label>
+            <textarea name="descricao" id="descricao" class="form-control" placeholder="Ex: Inscrições Abertas" required></textarea>
+        </div>
+
+        <div id="campos-container">
+            <h4>Adicione Campos ao Formulário</h4>
+        </div>
+
+        <button type="button" id="adicionar-campo" class="btn-add-campo">Adicinar Campo + </button>
+        <button type="submit" class="btn-cria-form">Criar Formulário</button>
+
+    </form>
+{% endblock %}
